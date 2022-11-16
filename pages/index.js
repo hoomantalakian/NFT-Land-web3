@@ -50,7 +50,7 @@ export default function Home() {
 			</search-box>
 			<div className="grid grid-cols-3 gap-5 mt-10">
 				{data.map((nft) => (
-					<NFTCard key={nft.tokenId} data={nft}></NFTCard>
+					<NFTCard key={Math.random()} data={nft}></NFTCard>
 				))}
 			</div>
 		</div>
