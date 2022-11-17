@@ -2,6 +2,7 @@ import Head from "next/head";
 import NFTCard from "../components/NFTCard.jsx";
 import { useState } from "react";
 import Lottie from "lottie-react";
+import movingCubes from "../images/moving-cubes.json";
 import cryptoTower from "../images/crypto-tower.json";
 //------------------------------
 
@@ -9,20 +10,31 @@ export default function Home() {
 	const [address, setAddress] = useState("");
 	const [data, setData] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
+	const [isInHome, setIsInHome] = useState(true);
 	//
 	const fetchNFTs = async (e) => {
 		e.preventDefault();
+		setData([]);
 		setIsLoading(true);
+		setIsInHome(false);
+
 		try {
 			const response = await fetch(`/api/get-nfts?wallet=${address}`);
-			if (!response.ok) return alert("Something went wrong!");
+			if (!response.ok) {
+				alert("Something went wrong!");
+				setIsLoading(false);
+				setIsInHome(true);
+			}
 			const data = await response.json();
 			if (data.data.totalCount == 0) return alert("Wallet has no NFTs");
 			setData(data.data.ownedNfts);
+			setIsInHome(false);
 		} catch (err) {
 			alert("There was an error fetching NFTs!");
+			setIsInHome(true);
 		}
 		setIsLoading(false);
+		setIsInHome(false);
 	};
 	//
 	return (
@@ -37,7 +49,7 @@ export default function Home() {
 			</Head>
 			<header className="mt-10">
 				<h1 className="text-center font-extrabold text-6xl text-amber-400 drop-shadow-xl">
-					NFT Land
+					<a href="./">NFT Land </a>
 				</h1>
 				<form className="flex flex-col my-5">
 					<input
@@ -57,7 +69,14 @@ export default function Home() {
 			</header>
 			{isLoading && (
 				<Lottie
-					className="w-auto h-80"
+					className="w-auto h-80 opacity-80"
+					animationData={movingCubes}
+					loop={true}
+				></Lottie>
+			)}
+			{isInHome && (
+				<Lottie
+					className="w-auto h-80 opacity-80"
 					animationData={cryptoTower}
 					loop={true}
 				></Lottie>
