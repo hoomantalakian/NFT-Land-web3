@@ -1,6 +1,8 @@
 import Head from "next/head";
 import NFTCard from "../components/NFTCard.jsx";
 import { useState } from "react";
+import Lottie from "lottie-react";
+import cryptoTower from "../images/crypto-tower.json";
 //------------------------------
 
 export default function Home() {
@@ -13,17 +15,15 @@ export default function Home() {
 			const response = await fetch(`/api/get-nfts?wallet=${address}`);
 			if (!response.ok) return alert("Something went wrong!");
 			const data = await response.json();
-			console.log(data);
 			if (data.data.totalCount == 0) return alert("Wallet has no NFTs");
 			setData(data.data.ownedNfts);
 		} catch (err) {
-			console.error(err);
 			alert("There was an error fetching NFTs!");
 		}
 	};
 	//
 	return (
-		<div className="container text-center m-auto">
+		<div className="container mx-auto px-4 text-center m-auto">
 			<Head>
 				<title>NFT Land</title>
 				<meta
@@ -32,24 +32,31 @@ export default function Home() {
 				/>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<header>
-				<h1 className="text-center font-bold">NFT Land</h1>
-				<form className="flex flex-col mt-10">
+			<header className="mt-10">
+				<h1 className="text-center font-extrabold text-6xl text-amber-400 drop-shadow-xl">
+					NFT Land
+				</h1>
+				<form className="flex flex-col my-5">
 					<input
 						value={address}
 						onChange={(e) => setAddress(e.target.value)}
 						type="text"
 						placeholder="Wallet Address"
-						className="pl-2 w-3/5 self-center"
+						className="pl-2 w-3/5 self-center rounded-sm"
 					/>
 					<button
 						onClick={fetchNFTs}
-						className="border w-1/5 self-center mt-5 rounded-md"
+						className=" w-1/5 self-center my-5 rounded-lg bg-teal-300 hover:bg-amber-200 ease-in-out duration-200 drop-shadow-xl"
 					>
 						Find NFTs !
 					</button>
 				</form>
 			</header>
+			<Lottie
+				className="w-auto h-80"
+				animationData={cryptoTower}
+				loop={true}
+			></Lottie>
 			<main className="grid grid-cols-3 gap-5 mt-10">
 				{data.map((nft) => (
 					<NFTCard key={Math.random()} data={nft}></NFTCard>
