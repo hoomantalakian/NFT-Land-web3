@@ -1,11 +1,12 @@
 import Head from "next/head";
 import NFTCard from "../components/NFTCard.jsx";
 import { useState } from "react";
-// ==================================
+//------------------------------
+
 export default function Home() {
 	const [address, setAddress] = useState("");
 	const [data, setData] = useState([]);
-
+	//
 	const fetchNFTs = async (e) => {
 		e.preventDefault();
 		try {
@@ -20,6 +21,7 @@ export default function Home() {
 			alert("There was an error fetching NFTs!");
 		}
 	};
+	//
 	return (
 		<div className="container text-center m-auto">
 			<Head>
@@ -30,7 +32,7 @@ export default function Home() {
 				/>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<search-box>
+			<header>
 				<h1 className="text-center font-bold">NFT Land</h1>
 				<form className="flex flex-col mt-10">
 					<input
@@ -47,12 +49,12 @@ export default function Home() {
 						Find NFTs !
 					</button>
 				</form>
-			</search-box>
-			<div className="grid grid-cols-3 gap-5 mt-10">
+			</header>
+			<main className="grid grid-cols-3 gap-5 mt-10">
 				{data.map((nft) => (
 					<NFTCard key={Math.random()} data={nft}></NFTCard>
 				))}
-			</div>
+			</main>
 		</div>
 	);
 }

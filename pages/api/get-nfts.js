@@ -1,10 +1,10 @@
 import { Network, Alchemy } from "alchemy-sdk";
-
+// ----------------------------
 const alchemy = new Alchemy({
 	apiKey: process.env.API_KEY,
 	network: Network.ETH_MAINNET,
 });
-
+//
 export default async function handler(req, res) {
 	try {
 		if (req.method !== "GET")
