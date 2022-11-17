@@ -15,7 +15,6 @@ export default async function handler(req, res) {
 		const results = await alchemy.nft.getNftsForOwner(wallet);
 		res.json({ message: "Fetch successful!", data: results });
 	} catch (err) {
-		console.error(err);
 		res.status(500).json({ message: "Internal Server Error!" });
 	}
 }

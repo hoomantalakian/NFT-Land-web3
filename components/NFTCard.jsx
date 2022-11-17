@@ -2,10 +2,10 @@
 import React from "react";
 // --------------------------
 //  https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg
+// https://img.icons8.com/cotton/32/documents.png
 function NFTCard({ data }) {
-	console.log(data?.media[0]?.gateway);
 	return (
-		<div className="flex flex-col p-3 border rounded-lg">
+		<div className="flex flex-col p-3 border border-gray-300 rounded-lg">
 			<img
 				src={
 					data?.media[0]?.gateway ||
@@ -20,22 +20,19 @@ function NFTCard({ data }) {
 					<i>&lt; no title &gt;</i>
 				)}
 			</div>
-			<contractAdressBar className="flex flex-row mt-2 table-fixed">
-				<contractAdress className="  bg-teal-200 rounded-l-md px-2 py-1 overflow-hidden ">
+			<contractaddressbar className="flex flex-row mt-2 table-fixed">
+				<contractadress className="  bg-teal-200 rounded-l-md px-2 py-1 truncate">
 					{data.contract.address}
-				</contractAdress>
+				</contractadress>
 				<button
-					className="bg-teal-500 w-auto px-2 py-1 rounded-r-md hover:mix-blend-hard-light "
+					className="bg-teal-500 w-auto px-2 py-1 rounded-r-md hover:mix-blend-hard-light"
 					onClick={() =>
 						navigator.clipboard.writeText(data.contract.address)
 					}
 				>
-					Copy
+					<p className="font-medium">Copy</p>
 				</button>
-			</contractAdressBar>
-			{/* <div className="mt-2  bg-teal-500 rounded-md px-2">
-				TokenID : {data.tokenId}
-			</div> */}
+			</contractaddressbar>
 		</div>
 	);
 }

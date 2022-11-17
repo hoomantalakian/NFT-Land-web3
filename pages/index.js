@@ -8,9 +8,11 @@ import cryptoTower from "../images/crypto-tower.json";
 export default function Home() {
 	const [address, setAddress] = useState("");
 	const [data, setData] = useState([]);
+	const [isLoading, setIsLoading] = useState(false);
 	//
 	const fetchNFTs = async (e) => {
 		e.preventDefault();
+		setIsLoading(true);
 		try {
 			const response = await fetch(`/api/get-nfts?wallet=${address}`);
 			if (!response.ok) return alert("Something went wrong!");
@@ -20,6 +22,7 @@ export default function Home() {
 		} catch (err) {
 			alert("There was an error fetching NFTs!");
 		}
+		setIsLoading(false);
 	};
 	//
 	return (
@@ -52,11 +55,13 @@ export default function Home() {
 					</button>
 				</form>
 			</header>
-			<Lottie
-				className="w-auto h-80"
-				animationData={cryptoTower}
-				loop={true}
-			></Lottie>
+			{isLoading && (
+				<Lottie
+					className="w-auto h-80"
+					animationData={cryptoTower}
+					loop={true}
+				></Lottie>
+			)}
 			<main className="grid grid-cols-3 gap-5 mt-10">
 				{data.map((nft) => (
 					<NFTCard key={Math.random()} data={nft}></NFTCard>
