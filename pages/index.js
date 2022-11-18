@@ -1,12 +1,7 @@
 import Head from "next/head";
 import NFTCard from "../components/NFTCard.jsx";
 import { useState } from "react";
-// import { Player } from "@lottiefiles/react-lottie-player";
-// import "@lottiefiles/lottie-player";
-// import Lottie from "lottie-react";
-// import * as LottiePlayer from "@lottiefiles/lottie-player";
-import movingCubes from "../images/moving-cubes.json";
-import cryptoTower from "../images/crypto-tower.json";
+import Script from "next/script";
 //------------------------------
 
 export default function Home() {
@@ -56,6 +51,7 @@ export default function Home() {
 				data !== [] ? "justify-evenly" : "justify-between"
 			} `}
 		>
+			<Script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" />
 			<Head>
 				<title>NFT Land</title>
 				<meta
@@ -63,10 +59,6 @@ export default function Home() {
 					content="A simple web-app for Eplore NFT"
 				/>
 				<link rel="icon" href="/favicon.ico" />
-				<script
-					src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"
-					defer
-				></script>
 			</Head>
 			{/* HEADER */}
 			<header className="mt-12">
@@ -96,36 +88,25 @@ export default function Home() {
 						<NFTCard key={Math.random()} data={nft}></NFTCard>
 					))}
 				</cards>
-				<lottie-player
-					src="https://assets3.lottiefiles.com/packages/lf20_2omr5gpu.json"
-					background="transparent"
-					speed="1"
-					loop
-					autoplay
-				></lottie-player>
-				{/* <Player
-					autoplay
-					loop
-					src={movingCubes}
-					style={{ height: "300px", width: "300px" }}
-				></Player> */}
-				{/* {isInHome && (
-					<Lottie
+
+				{isInHome && (
+					<lottie-player
 						id="crypto-tower"
-						className="h-80 w-auto -translate-x-3 opacity-80 drop-shadow-[0_40px_60px_rgba(0,0,0,0.60)]"
-						path="https://assets3.lottiefiles.com/packages/lf20_2omr5gpu.json"
-						// animationData=""
-						loop={true}
-					></Lottie>
+						src="https://assets3.lottiefiles.com/packages/lf20_2omr5gpu.json"
+						speed="1"
+						loop
+						autoplay
+					></lottie-player>
 				)}
-				{isLoading && (
-					<Lottie
+				{true && (
+					<lottie-player
 						id="loading-cubes"
-						className="h-80 w-auto opacity-80"
-						animationData={movingCubes}
-						loop={true}
-					></Lottie>
-				)} */}
+						src="https://assets4.lottiefiles.com/private_files/lf30_c52paxfj.json"
+						speed="1"
+						loop
+						autoplay
+					></lottie-player>
+				)}
 			</main>
 
 			{/* FOOTER */}
