@@ -29,16 +29,15 @@ export default function Home() {
 			if (data.data.totalCount == 0) return alert("Wallet has no NFTs");
 			setData(data.data.ownedNfts);
 			setIsInHome(false);
+			setIsLoading(false);
 		} catch (err) {
 			alert("There was an error fetching NFTs!");
 			setIsInHome(true);
 		}
-		setIsLoading(false);
-		setIsInHome(false);
 	};
 	//
 	return (
-		<div className="container mx-auto px-4 text-center m-auto">
+		<div className="container mx-auto px-8 text-center ">
 			<Head>
 				<title>NFT Land</title>
 				<meta
@@ -48,7 +47,7 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<header className="mt-10">
-				<h1 className="text-center font-extrabold text-6xl text-amber-400 drop-shadow-xl">
+				<h1 className="text-center font-extrabold text-6xl text-amber-400 drop-shadow-xl ">
 					<a href="./">NFT Land </a>
 				</h1>
 				<form className="flex flex-col my-5">
@@ -56,32 +55,35 @@ export default function Home() {
 						value={address}
 						onChange={(e) => setAddress(e.target.value)}
 						type="text"
-						placeholder="Wallet Address"
-						className="pl-2 w-3/5 self-center rounded-sm"
+						placeholder="Paste Wallet Address Here"
+						className="pl-2 w-2/5 self-center rounded-sm shadow-lg"
 					/>
 					<button
 						onClick={fetchNFTs}
-						className=" w-1/5 self-center my-5 rounded-lg bg-teal-300 hover:bg-amber-200 ease-in-out duration-200 drop-shadow-xl"
+						className=" w-1/5 self-center my-5 rounded-lg bg-amber-400 hover:bg-teal-300 ease-in-out duration-200  drop-shadow-[0_5px_5px_rgba(0,0,0,0.25)]"
 					>
 						Find NFTs !
 					</button>
 				</form>
 			</header>
+			{isInHome && (
+				<Lottie
+					id="crypto-tower"
+					className="w-auto h-80 opacity-80 drop-shadow-[0_30px_40px_rgba(0,0,0,0.50)] -translate-x-3"
+					animationData={cryptoTower}
+					loop={true}
+				></Lottie>
+			)}
 			{isLoading && (
 				<Lottie
+					id="loading-cubes"
 					className="w-auto h-80 opacity-80"
 					animationData={movingCubes}
 					loop={true}
 				></Lottie>
 			)}
-			{isInHome && (
-				<Lottie
-					className="w-auto h-80 opacity-80"
-					animationData={cryptoTower}
-					loop={true}
-				></Lottie>
-			)}
-			<main className="grid grid-cols-3 gap-5 mt-10">
+
+			<main className="grid md:grid-cols-3 gap-5 mt-5">
 				{data.map((nft) => (
 					<NFTCard key={Math.random()} data={nft}></NFTCard>
 				))}

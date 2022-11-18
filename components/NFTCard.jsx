@@ -1,12 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 // --------------------------
-//  https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg
-// https://img.icons8.com/cotton/32/documents.png
 function NFTCard({ data }) {
 	return (
 		<div className="flex flex-col p-3 border border-gray-300 rounded-lg">
-			<img
+			<img className="overflow-hidden"
 				src={
 					data?.media[0]?.gateway ||
 					"https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg"
@@ -20,7 +18,7 @@ function NFTCard({ data }) {
 					<i>&lt; no title &gt;</i>
 				)}
 			</div>
-			<contractaddressbar className="flex flex-row mt-2 table-fixed">
+			<contractaddressbar className="flex flex-row mt-2 table-fixed justify-center">
 				<contractadress className="  bg-teal-200 rounded-l-md px-2 py-1 truncate">
 					{data.contract.address}
 				</contractadress>
