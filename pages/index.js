@@ -5,14 +5,6 @@ import Lottie from "lottie-react";
 import movingCubes from "../images/moving-cubes.json";
 import cryptoTower from "../images/crypto-tower.json";
 //------------------------------
-const defaultOptions = {
-	loop: true,
-	autoplay: true,
-	path: "../",
-	rendererSettings: {
-		preserveAspectRatio: "xMidYMid slice",
-	},
-};
 
 export default function Home() {
 	const [address, setAddress] = useState("");
@@ -56,7 +48,7 @@ export default function Home() {
 	};
 	//
 	return (
-		<div
+		<wholepage
 			className={`container m-auto flex  min-h-screen flex-col px-10 text-center md:px-20 ${
 				data !== [] ? "justify-evenly" : "justify-between"
 			} `}
@@ -92,30 +84,29 @@ export default function Home() {
 			</header>
 			{/* BODY */}
 			<main>
-				<div className="mt-5 grid  justify-center gap-5 md:grid-cols-2 lg:grid-cols-3 ">
+				<cards className="mt-5 grid  justify-center gap-5 md:grid-cols-2 lg:grid-cols-3 ">
 					{data.map((nft) => (
 						<NFTCard key={Math.random()} data={nft}></NFTCard>
 					))}
-				</div>
-
+				</cards>
+				
 				{isInHome && (
 					<Lottie
 						id="crypto-tower"
-						options={defaultOptions}
 						className="h-80 w-auto -translate-x-3 opacity-80 drop-shadow-[0_40px_60px_rgba(0,0,0,0.60)]"
-						animationData={cryptoTower}
+						path="https://assets3.lottiefiles.com/packages/lf20_2omr5gpu.json"
+						// animationData=""
 						loop={true}
 					></Lottie>
 				)}
-				{isLoading && (
+				{/* {isLoading && (
 					<Lottie
 						id="loading-cubes"
-						options={defaultOptions}
 						className="h-80 w-auto opacity-80"
 						animationData={movingCubes}
 						loop={true}
 					></Lottie>
-				)}
+				)} */}
 			</main>
 
 			{/* FOOTER */}
@@ -130,6 +121,6 @@ export default function Home() {
 					Hooman Talakian
 				</a>
 			</footer>
-		</div>
+		</wholepage>
 	);
 }
