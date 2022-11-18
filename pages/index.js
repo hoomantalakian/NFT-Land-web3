@@ -28,16 +28,22 @@ export default function Home() {
 				alert("Something went wrong!");
 				setIsLoading(false);
 				setIsInHome(true);
+				return;
 			}
 			const data = await response.json();
-			if (data.data.totalCount == 0) return alert("Wallet has no NFTs");
+			if (data.data.totalCount == 0) {
+				setIsInHome(true);
+				setIsLoading(false);
+				alert("Wallet has no NFTs");
+			}
 			setData(data.data.ownedNfts);
-			setIsInHome(false);
 			setIsLoading(false);
+			return;
 		} catch (err) {
 			alert("There was an error fetching NFTs!");
-			setIsInHome(true);
+			return;
 		}
+		// setIsLoading(false);
 	};
 	//
 	return (
@@ -69,7 +75,7 @@ export default function Home() {
 					/>
 					<button
 						onClick={fetchNFTs}
-						className=" my-5 w-auto self-center rounded-lg bg-amber-400 px-5 py-1 drop-shadow-[0_5px_5px_rgba(0,0,0,0.25)] duration-200 ease-in-out  hover:bg-teal-300"
+						className=" my-5 w-auto self-center rounded-lg bg-amber-400 px-5 py-1 font-semibold text-gray-800 drop-shadow-[0_5px_5px_rgba(0,0,0,0.25)] duration-200  ease-in-out hover:bg-teal-300"
 					>
 						Find NFTs !
 					</button>
