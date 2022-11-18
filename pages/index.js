@@ -61,7 +61,7 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			{/* HEADER */}
-			<header className="mt-12">
+			<header className="mt-10">
 				<h1 className="text-center text-6xl font-extrabold text-amber-400 drop-shadow-xl ">
 					<a href="./">NFT Land </a>
 				</h1>
@@ -83,29 +83,33 @@ export default function Home() {
 			</header>
 			{/* BODY */}
 			<main>
-				<cards className="mt-5 grid  justify-center gap-5 md:grid-cols-2 lg:grid-cols-3 ">
+				<cards className="mt-4 grid justify-center gap-5 md:grid-cols-2 lg:grid-cols-3 ">
 					{data.map((nft) => (
 						<NFTCard key={Math.random()} data={nft}></NFTCard>
 					))}
 				</cards>
 
 				{isInHome && (
-					<lottie-player
-						id="crypto-tower"
-						src="https://assets3.lottiefiles.com/packages/lf20_2omr5gpu.json"
-						speed="1"
-						loop
-						autoplay
-					></lottie-player>
+					<div className="m-auto h-[18rem] w-[15rem] -translate-x-3 scale-110">
+						<lottie-player
+							id="crypto-tower"
+							src="https://assets3.lottiefiles.com/packages/lf20_2omr5gpu.json"
+							speed="1"
+							loop
+							autoplay
+						></lottie-player>
+					</div>
 				)}
-				{true && (
-					<lottie-player
-						id="loading-cubes"
-						src="https://assets4.lottiefiles.com/private_files/lf30_c52paxfj.json"
-						speed="1"
-						loop
-						autoplay
-					></lottie-player>
+				{isLoading && (
+					<div className="m-auto h-[18rem] w-[15rem] scale-150 opacity-80">
+						<lottie-player
+							id="loading-cubes"
+							src="https://assets4.lottiefiles.com/private_files/lf30_c52paxfj.json"
+							speed="1"
+							loop
+							autoplay
+						></lottie-player>
+					</div>
 				)}
 			</main>
 

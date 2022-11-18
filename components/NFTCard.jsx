@@ -3,10 +3,13 @@ import React from "react";
 // --------------------------
 function NFTCard({ data }) {
 	return (
-		<div className="m-auto flex  max-w-[60%] flex-col rounded-lg border border-gray-300 p-3  sm:m-0 sm:max-w-lg ">
+		<div className="m-auto flex  max-w-[70%] flex-col rounded-lg border border-gray-300 p-3  sm:m-0 sm:max-w-lg ">
 			<img
-
-				className={data?.media[0]?.gateway ? 'overflow-hidden': 'object-contain' }
+				className={
+					data?.media[0]?.gateway
+						? "overflow-hidden"
+						: "object-contain"
+				}
 				src={
 					data?.media[0]?.gateway ||
 					"https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg"
