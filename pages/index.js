@@ -106,20 +106,24 @@ export default function Home() {
 					// 	animationData={cryptoTower}
 					// 	loop={true}
 					// ></Lottie>
+					<div style={{width:' 500px', backgroundColor: 'red'}}>
 					<Lottie
 						
 						animationData={cryptoTower}
 						
-					></Lottie>
+					></Lottie></div>
 				)}
 				{isLoading && (
-					<Lottie
+				
+						<Lottie
 						id="loading-cubes"
 						options={defaultOptions}
 						className="h-80 w-auto opacity-80"
 						animationData={movingCubes}
 						loop={true}
-					></Lottie>
+					/>
+					
+					
 				)}
 			</main>
 
