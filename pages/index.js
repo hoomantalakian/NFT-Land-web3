@@ -4,6 +4,7 @@ import { useState } from "react";
 import Lottie from "lottie-react";
 import movingCubes from "../images/moving-cubes.json";
 import cryptoTower from "../images/crypto-tower.json";
+import Example from "../components/Lottiecube.jsx";
 //------------------------------
 
 export default function Home() {
@@ -91,13 +92,14 @@ export default function Home() {
 				</cards>
 				
 				{isInHome && (
-					<Lottie
-						id="crypto-tower"
-						className="h-80 w-auto -translate-x-3 opacity-80 drop-shadow-[0_40px_60px_rgba(0,0,0,0.60)]"
-						path="https://assets3.lottiefiles.com/packages/lf20_2omr5gpu.json"
-						// animationData=""
-						loop={true}
-					></Lottie>
+					<Example/>
+					// <Lottie
+					// 	id="crypto-tower"
+					// 	className="h-80 w-auto -translate-x-3 opacity-80 drop-shadow-[0_40px_60px_rgba(0,0,0,0.60)]"
+					// 	path="https://assets3.lottiefiles.com/packages/lf20_2omr5gpu.json"
+					// 	// animationData=""
+					// 	loop={true}
+					// ></Lottie>
 				)}
 				{/* {isLoading && (
 					<Lottie
