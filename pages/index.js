@@ -1,10 +1,10 @@
 import Head from "next/head";
 import NFTCard from "../components/NFTCard.jsx";
 import { useState } from "react";
-import Lottie from "lottie-react";
-// import movingCubes from "../images/moving-cubes.json";
+import { Player } from "@lottiefiles/react-lottie-player";
+// import Lottie from "lottie-react";
+import movingCubes from "../images/moving-cubes.json";
 // import cryptoTower from "../images/crypto-tower.json";
-import Example from "../components/Lottiecube.jsx";
 //------------------------------
 
 export default function Home() {
@@ -90,18 +90,22 @@ export default function Home() {
 						<NFTCard key={Math.random()} data={nft}></NFTCard>
 					))}
 				</cards>
-				
-				{isInHome && (
-					<Example/>
-					// <Lottie
-					// 	id="crypto-tower"
-					// 	className="h-80 w-auto -translate-x-3 opacity-80 drop-shadow-[0_40px_60px_rgba(0,0,0,0.60)]"
-					// 	path="https://assets3.lottiefiles.com/packages/lf20_2omr5gpu.json"
-					// 	// animationData=""
-					// 	loop={true}
-					// ></Lottie>
+				<Player
+					autoplay
+					loop
+					src={movingCubes}
+					style={{ height: "300px", width: "300px" }}
+				></Player>
+				{/* {isInHome && (
+					<Lottie
+						id="crypto-tower"
+						className="h-80 w-auto -translate-x-3 opacity-80 drop-shadow-[0_40px_60px_rgba(0,0,0,0.60)]"
+						path="https://assets3.lottiefiles.com/packages/lf20_2omr5gpu.json"
+						// animationData=""
+						loop={true}
+					></Lottie>
 				)}
-				{/* {isLoading && (
+				{isLoading && (
 					<Lottie
 						id="loading-cubes"
 						className="h-80 w-auto opacity-80"
