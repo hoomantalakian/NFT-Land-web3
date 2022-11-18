@@ -37,7 +37,11 @@ export default function Home() {
 	};
 	//
 	return (
-		<div className="container mx-auto px-8 text-center ">
+		<div
+			className={`flex flex-col  ${
+				data == [] ? "justify-evenly" : "justify-between"
+			} h-screen container mx-auto px-20 text-center`}
+		>
 			<Head>
 				<title>NFT Land</title>
 				<meta
@@ -46,6 +50,7 @@ export default function Home() {
 				/>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
+			{/* B1 */}
 			<header className="mt-10">
 				<h1 className="text-center font-extrabold text-6xl text-amber-400 drop-shadow-xl ">
 					<a href="./">NFT Land </a>
@@ -66,6 +71,7 @@ export default function Home() {
 					</button>
 				</form>
 			</header>
+			{/* B2 */}
 			{isInHome && (
 				<Lottie
 					id="crypto-tower"
@@ -88,6 +94,18 @@ export default function Home() {
 					<NFTCard key={Math.random()} data={nft}></NFTCard>
 				))}
 			</main>
+			{/* B3 */}
+			<footer className="mt-8 mb-5">
+				Made by{" "}
+				<a
+					className=" text-blue-900 font-semibold"
+					href="https://github.com/hoomantalakian"
+					target="_blank"
+					rel="noreferrer"
+				>
+					Hooman Talakian
+				</a>
+			</footer>
 		</div>
 	);
 }

@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 /* Animating Background Gradient */
+html {
+	margin: 0;
+}
 body {
 	background-position: top;
 	width: 100%;
