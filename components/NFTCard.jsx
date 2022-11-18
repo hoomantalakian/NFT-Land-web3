@@ -3,7 +3,7 @@ import React from "react";
 // --------------------------
 function NFTCard({ data }) {
 	return (
-		<nima className="m-auto flex  max-w-[60%] flex-col rounded-lg border border-gray-300 p-3  sm:m-0 sm:max-w-lg ">
+		<div className="m-auto flex  max-w-[60%] flex-col rounded-lg border border-gray-300 p-3  sm:m-0 sm:max-w-lg ">
 			<img
 				className={data?.media[0]?.gateway ? 'overflow-hidden': 'object-contain	' }
 				src={
@@ -19,7 +19,7 @@ function NFTCard({ data }) {
 					<i>&lt; no title &gt;</i>
 				)}
 			</div>
-			<contractaddressbar className="mt-2 flex table-fixed flex-row justify-center">
+			<contact className="mt-2 flex table-fixed flex-row justify-center">
 				<contactadress className=" truncate rounded-l-md bg-teal-200 px-2 py-1">
 					{data.contract.address}
 				</contactadress>
@@ -31,8 +31,8 @@ function NFTCard({ data }) {
 				>
 					<p className="font-medium">Copy</p>
 				</button>
-			</contractaddressbar>
-		</nima>
+			</contact>
+		</div>
 	);
 }
 

@@ -5,6 +5,14 @@ import Lottie from "lottie-react";
 import movingCubes from "../images/moving-cubes.json";
 import cryptoTower from "../images/crypto-tower.json";
 //------------------------------
+const defaultOptions = {
+	loop: true,
+	autoplay: true,
+	path: "../images",
+	rendererSettings: {
+		preserveAspectRatio: "xMidYMid slice",
+	},
+};
 
 export default function Home() {
 	const [address, setAddress] = useState("");
@@ -49,9 +57,9 @@ export default function Home() {
 	//
 	return (
 		<wholepage
-			className={`flex flex-col ${
+			className={`container m-auto flex  min-h-screen flex-col px-10 text-center md:px-20 ${
 				data !== [] ? "justify-evenly" : "justify-between"
-			} container  m-auto min-h-screen px-10 text-center md:px-20`}
+			} `}
 		>
 			<Head>
 				<title>NFT Land</title>
@@ -93,6 +101,7 @@ export default function Home() {
 				{isInHome && (
 					<Lottie
 						id="crypto-tower"
+						options={defaultOptions}
 						className="h-80 w-auto -translate-x-3 opacity-80 drop-shadow-[0_40px_60px_rgba(0,0,0,0.60)]"
 						animationData={cryptoTower}
 						loop={true}
@@ -101,6 +110,7 @@ export default function Home() {
 				{isLoading && (
 					<Lottie
 						id="loading-cubes"
+						options={defaultOptions}
 						className="h-80 w-auto opacity-80"
 						animationData={movingCubes}
 						loop={true}
