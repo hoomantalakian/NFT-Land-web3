@@ -37,6 +37,7 @@ export default function Home() {
 				alert("Wallet has no NFTs");
 			}
 			setData(data.data.ownedNfts);
+			console.log(data);
 			setIsLoading(false);
 			return;
 		} catch (err) {
@@ -47,10 +48,10 @@ export default function Home() {
 	};
 	//
 	return (
-		<div
-			className={`flex flex-col  ${
+		<wholepage
+			className={`flex flex-col ${
 				data !== [] ? "justify-evenly" : "justify-between"
-			} container mx-auto min-h-screen px-10 text-center md:px-20`}
+			} container  m-auto min-h-screen px-10 text-center md:px-20`}
 		>
 			<Head>
 				<title>NFT Land</title>
@@ -83,7 +84,7 @@ export default function Home() {
 			</header>
 			{/* BODY */}
 			<main>
-				<cards className="mt-5 grid gap-5  md:grid-cols-2 lg:grid-cols-3">
+				<cards className="mt-5 grid  justify-center gap-5 md:grid-cols-2 lg:grid-cols-3 ">
 					{data.map((nft) => (
 						<NFTCard key={Math.random()} data={nft}></NFTCard>
 					))}
@@ -119,6 +120,6 @@ export default function Home() {
 					Hooman Talakian
 				</a>
 			</footer>
-		</div>
+		</wholepage>
 	);
 }
