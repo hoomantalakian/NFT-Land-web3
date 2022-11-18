@@ -14,6 +14,10 @@ export default function Home() {
 	//
 	const fetchNFTs = async (e) => {
 		e.preventDefault();
+		if (address === "") {
+			alert("Please provide Wallet Address!");
+			return;
+		}
 		setData([]);
 		setIsLoading(true);
 		setIsInHome(false);
@@ -39,8 +43,8 @@ export default function Home() {
 	return (
 		<div
 			className={`flex flex-col  ${
-				data == [] ? "justify-evenly" : "justify-between"
-			} h-screen container mx-auto px-20 text-center`}
+				data !== [] ? "justify-evenly" : "justify-between"
+			} container mx-auto min-h-screen px-10 text-center md:px-20`}
 		>
 			<Head>
 				<title>NFT Land</title>
@@ -50,55 +54,58 @@ export default function Home() {
 				/>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			{/* B1 */}
-			<header className="mt-10">
-				<h1 className="text-center font-extrabold text-6xl text-amber-400 drop-shadow-xl ">
+			{/* HEADER */}
+			<header className="mt-12">
+				<h1 className="text-center text-6xl font-extrabold text-amber-400 drop-shadow-xl ">
 					<a href="./">NFT Land </a>
 				</h1>
-				<form className="flex flex-col my-5">
+				<form className="mt-5 flex flex-col">
 					<input
 						value={address}
 						onChange={(e) => setAddress(e.target.value)}
 						type="text"
 						placeholder="Paste Wallet Address Here"
-						className="pl-2 w-2/5 self-center rounded-sm shadow-lg"
+						className="w-full self-center rounded-sm pl-2 shadow-lg  lg:w-96"
 					/>
 					<button
 						onClick={fetchNFTs}
-						className=" w-1/5 self-center my-5 rounded-lg bg-amber-400 hover:bg-teal-300 ease-in-out duration-200  drop-shadow-[0_5px_5px_rgba(0,0,0,0.25)]"
+						className=" my-5 w-auto self-center rounded-lg bg-amber-400 px-5 py-1 drop-shadow-[0_5px_5px_rgba(0,0,0,0.25)] duration-200 ease-in-out  hover:bg-teal-300"
 					>
 						Find NFTs !
 					</button>
 				</form>
 			</header>
-			{/* B2 */}
-			{isInHome && (
-				<Lottie
-					id="crypto-tower"
-					className="w-auto h-80 opacity-80 drop-shadow-[0_30px_40px_rgba(0,0,0,0.50)] -translate-x-3"
-					animationData={cryptoTower}
-					loop={true}
-				></Lottie>
-			)}
-			{isLoading && (
-				<Lottie
-					id="loading-cubes"
-					className="w-auto h-80 opacity-80"
-					animationData={movingCubes}
-					loop={true}
-				></Lottie>
-			)}
+			{/* BODY */}
+			<main>
+				<cards className="mt-5 grid gap-5  md:grid-cols-2 lg:grid-cols-3">
+					{data.map((nft) => (
+						<NFTCard key={Math.random()} data={nft}></NFTCard>
+					))}
+				</cards>
 
-			<main className="grid md:grid-cols-3 gap-5 mt-5">
-				{data.map((nft) => (
-					<NFTCard key={Math.random()} data={nft}></NFTCard>
-				))}
+				{isInHome && (
+					<Lottie
+						id="crypto-tower"
+						className="h-80 w-auto -translate-x-3 opacity-80 drop-shadow-[0_40px_60px_rgba(0,0,0,0.60)]"
+						animationData={cryptoTower}
+						loop={true}
+					></Lottie>
+				)}
+				{isLoading && (
+					<Lottie
+						id="loading-cubes"
+						className="h-80 w-auto opacity-80"
+						animationData={movingCubes}
+						loop={true}
+					></Lottie>
+				)}
 			</main>
-			{/* B3 */}
-			<footer className="mt-8 mb-5">
+
+			{/* FOOTER */}
+			<footer className="mt-8 mb-5 text-gray-900">
 				Made by{" "}
 				<a
-					className=" text-blue-900 font-semibold"
+					className=" font-semibold text-blue-900"
 					href="https://github.com/hoomantalakian"
 					target="_blank"
 					rel="noreferrer"

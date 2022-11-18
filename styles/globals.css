@@ -4,9 +4,6 @@
 
 /* Animating Background Gradient */
 html {
-	margin: 0;
-}
-body {
 	background-position: top;
 	width: 100%;
 	height: 100vh;
@@ -37,18 +34,19 @@ img {
 	width: 100%;
 	height: 300px;
 	object-fit: cover;
-	object-position: b;
+	object-position: center;
 }
-
+/* header title */
 h1 {
 	animation: glow 2s ease-in-out infinite alternate;
 }
 @keyframes glow {
 	from {
-		text-shadow: 5px 0 10px #0000001f;
+		text-shadow: 5px 0 10px #0000002d;
 	}
 	to {
-		text-shadow: 5px 0 10px rgba(0, 0, 0, 0.226),
-			0 0 10px rgba(0, 0, 0, 0.253);
+		text-shadow: 5px 0 10px rgba(0, 0, 0, 0.322),
+			0 0 10px rgba(0, 0, 0, 0.336);
 	}
 }
+/*  */
