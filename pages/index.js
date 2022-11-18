@@ -2,8 +2,8 @@ import Head from "next/head";
 import NFTCard from "../components/NFTCard.jsx";
 import { useState } from "react";
 import Lottie from "lottie-react";
-import movingCubes from "../images/moving-cubes.json";
-import cryptoTower from "../images/crypto-tower.json";
+// import movingCubes from "../images/moving-cubes.json";
+// import cryptoTower from "../images/crypto-tower.json";
 import Example from "../components/Lottiecube.jsx";
 //------------------------------
 

@@ -1,6 +1,7 @@
 import Lottie from "lottie-react";
-import * as MovingCubes from "../images/moving-cubes.json";
+import * as MovingCubes from "../moving-cubes.json";
 const style = {
+  width: 300,
   height: 300,
 };
 
@@ -31,7 +32,7 @@ const Example = () => {
       animationData={MovingCubes}
       style={style}
       interactivity={interactivity}
-      loop
+      
     />
   );
 };
