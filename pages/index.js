@@ -4,7 +4,7 @@ import { useState } from "react";
 import Script from "next/script";
 //------------------------------
 
-export default function Home() {
+export default function Home(props) {
 	const [address, setAddress] = useState("");
 	const [data, setData] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
@@ -51,7 +51,8 @@ export default function Home() {
 				data !== [] ? "justify-evenly" : "justify-between"
 			} `}
 		>
-			<Script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" />
+			{/* ================ */}
+			<Script src={props.scriptAddress} />
 			<Head>
 				<title>NFT Land</title>
 				<meta
@@ -93,7 +94,8 @@ export default function Home() {
 					<div className="m-auto h-[18rem] w-[15rem] -translate-x-3 scale-110">
 						<lottie-player
 							id="crypto-tower"
-							src="https://assets3.lottiefiles.com/packages/lf20_2omr5gpu.json"
+							// =============
+							src={props.cryptoTowerAddress}
 							speed="1"
 							loop
 							autoplay
@@ -104,7 +106,8 @@ export default function Home() {
 					<div className="m-auto h-[18rem] w-[15rem] scale-150 opacity-80">
 						<lottie-player
 							id="loading-cubes"
-							src="https://assets4.lottiefiles.com/private_files/lf30_c52paxfj.json"
+							// ================
+							src={props.loadingCubesAddress}
 							speed="1"
 							loop
 							autoplay
@@ -127,4 +130,20 @@ export default function Home() {
 			</footer>
 		</wholepage>
 	);
+}
+export function getStaticProps(context) {
+	const scriptAddress =
+		"https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js";
+	const cryptoTowerAddress =
+		"https://assets3.lottiefiles.com/packages/lf20_2omr5gpu.json";
+	const loadingCubesAddress =
+		"https://assets4.lottiefiles.com/private_files/lf30_c52paxfj.json";
+
+	return {
+		props: {
+			scriptAddress: scriptAddress,
+			cryptoTowerAddress: cryptoTowerAddress,
+			loadingCubesAddress: loadingCubesAddress,
+		},
+	};
 }
