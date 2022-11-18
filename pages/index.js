@@ -1,14 +1,11 @@
 import Head from "next/head";
 import NFTCard from "../components/NFTCard.jsx";
 import { useState } from "react";
-import Lottie from "lottie-react";
-import cryptoTower from "../public/images/crypto-tower.json";
-// import Script from "next/script";
-// import axios from "axios";
-
+import Script from "next/script";
+import axios from "axios";
 //------------------------------
 
-export default function Home() {
+export default function Home(props) {
 	const [address, setAddress] = useState("");
 	const [data, setData] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
@@ -46,7 +43,6 @@ export default function Home() {
 			alert("There was an error fetching NFTs!");
 			return;
 		}
-		// setIsLoading(false);
 	};
 	//
 	return (
@@ -55,8 +51,8 @@ export default function Home() {
 				data !== [] ? "justify-evenly" : "justify-between"
 			} `}
 		>
-			{/* ================ */}
-			{/* <Script src={props.scriptAddress} /> */}
+			{" "}
+			<Script src={props.scriptAddress} />
 			<Head>
 				<title>NFT Land</title>
 				<meta
@@ -96,31 +92,27 @@ export default function Home() {
 
 				{isInHome && (
 					<div className="m-auto h-[18rem] w-[15rem] -translate-x-3 scale-110">
-						<Lottie animationData={cryptoTower} loop={true} />
-						{/* <lottie-player
+						<lottie-player
 							id="crypto-tower"
-							// =============
 							src={props.cryptoTowerAddress}
 							speed="1"
 							loop
 							autoplay
-						></lottie-player> */}
+						></lottie-player>
 					</div>
 				)}
 				{isLoading && (
 					<div className="m-auto h-[18rem] w-[15rem] scale-150 opacity-80">
-						{/* <lottie-player
+						<lottie-player
 							id="loading-cubes"
-							// ================
 							src={props.loadingCubesAddress}
 							speed="1"
 							loop
 							autoplay
-						></lottie-player> */}
+						></lottie-player>
 					</div>
 				)}
 			</main>
-
 			{/* FOOTER */}
 			<footer className="mt-8 mb-5 text-gray-900">
 				Made by{" "}
@@ -136,19 +128,19 @@ export default function Home() {
 		</wholepage>
 	);
 }
-// export function getStaticProps(context) {
-// 	const scriptAddress =
-// 		"https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js";
-// 	const cryptoTowerAddress =
-// 		"https://assets3.lottiefiles.com/packages/lf20_2omr5gpu.json";
-// 	const loadingCubesAddress =
-// 		"https://assets4.lottiefiles.com/private_files/lf30_c52paxfj.json";
+export function getStaticProps(context) {
+	const scriptAddress =
+		"https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js";
+	const cryptoTowerAddress =
+		"https://assets3.lottiefiles.com/packages/lf20_2omr5gpu.json";
+	const loadingCubesAddress =
+		"https://assets4.lottiefiles.com/private_files/lf30_c52paxfj.json";
 
-// 	return {
-// 		props: {
-// 			scriptAddress,
-// 			cryptoTowerAddress,
-// 			loadingCubesAddress,
-// 		},
-// 	};
-// }
+	return {
+		props: {
+			scriptAddress,
+			cryptoTowerAddress,
+			loadingCubesAddress,
+		},
+	};
+}
