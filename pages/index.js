@@ -1,10 +1,12 @@
 import Head from "next/head";
 import NFTCard from "../components/NFTCard.jsx";
 import { useState } from "react";
-import { Player } from "@lottiefiles/react-lottie-player";
+// import { Player } from "@lottiefiles/react-lottie-player";
+// import "@lottiefiles/lottie-player";
 // import Lottie from "lottie-react";
+// import * as LottiePlayer from "@lottiefiles/lottie-player";
 import movingCubes from "../images/moving-cubes.json";
-// import cryptoTower from "../images/crypto-tower.json";
+import cryptoTower from "../images/crypto-tower.json";
 //------------------------------
 
 export default function Home() {
@@ -61,6 +63,10 @@ export default function Home() {
 					content="A simple web-app for Eplore NFT"
 				/>
 				<link rel="icon" href="/favicon.ico" />
+				<script
+					src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"
+					defer
+				></script>
 			</Head>
 			{/* HEADER */}
 			<header className="mt-12">
@@ -90,12 +96,20 @@ export default function Home() {
 						<NFTCard key={Math.random()} data={nft}></NFTCard>
 					))}
 				</cards>
-				<Player
+				<lottie-player
+					src="https://assets9.lottiefiles.com/datafiles/MUp3wlMDGtoK5FK/data.json"
+					background="transparent"
+					speed="1"
+					// style="width: 300px; height: 300px;"
+					loop
+					autoplay
+				></lottie-player>
+				{/* <Player
 					autoplay
 					loop
 					src={movingCubes}
 					style={{ height: "300px", width: "300px" }}
-				></Player>
+				></Player> */}
 				{/* {isInHome && (
 					<Lottie
 						id="crypto-tower"
