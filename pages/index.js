@@ -99,12 +99,17 @@ export default function Home() {
 				</cards>
 
 				{isInHome && (
+					// <Lottie
+					// 	id="crypto-tower"
+					// 	options={defaultOptions}
+					// 	className="h-80 w-auto -translate-x-3 opacity-80 drop-shadow-[0_40px_60px_rgba(0,0,0,0.60)]"
+					// 	animationData={cryptoTower}
+					// 	loop={true}
+					// ></Lottie>
 					<Lottie
-						id="crypto-tower"
-						options={defaultOptions}
-						className="h-80 w-auto -translate-x-3 opacity-80 drop-shadow-[0_40px_60px_rgba(0,0,0,0.60)]"
+						
 						animationData={cryptoTower}
-						loop={true}
+						
 					></Lottie>
 				)}
 				{isLoading && (
