@@ -4,6 +4,7 @@ import React from "react";
 function NFTCard({ data }) {
 	return (
 		<div className="m-auto flex  max-w-[70%] flex-col rounded-lg border border-gray-300 p-3  sm:m-0 sm:max-w-lg ">
+			{/* image */}
 			<img
 				className={
 					data?.media[0]?.gateway
@@ -16,6 +17,7 @@ function NFTCard({ data }) {
 				}
 				alt={data?.description}
 			/>
+			{/* title */}
 			<div className="mt-2 rounded-md bg-teal-50 px-2">
 				{data.title ? (
 					<p className="font-semibold">{data.title}</p>
@@ -23,10 +25,11 @@ function NFTCard({ data }) {
 					<i>&lt; no title &gt;</i>
 				)}
 			</div>
-			<contact className="mt-2 flex table-fixed flex-row justify-center">
-				<contactadress className=" truncate rounded-l-md bg-teal-200 px-2 py-1">
+			{/* contract info */}
+			<div className="mt-2 flex table-fixed flex-row justify-center">
+				<div className=" truncate rounded-l-md bg-teal-200 px-2 py-1">
 					{data.contract.address}
-				</contactadress>
+				</div>
 				<button
 					className="w-auto rounded-r-md bg-teal-500 px-2 py-1 hover:mix-blend-hard-light"
 					onClick={() =>
@@ -35,7 +38,7 @@ function NFTCard({ data }) {
 				>
 					<p className="font-medium">Copy</p>
 				</button>
-			</contact>
+			</div>
 		</div>
 	);
 }

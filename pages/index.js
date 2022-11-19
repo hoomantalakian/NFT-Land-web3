@@ -10,11 +10,12 @@ export default function Home({
 	cryptoTowerAddress,
 	loadingCubesAddress,
 }) {
+	// states
 	const [address, setAddress] = useState("");
 	const [data, setData] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
 	const [isInHome, setIsInHome] = useState(true);
-	//
+	// fetch data handler
 	const fetchNFTs = async (e) => {
 		e.preventDefault();
 		if (address === "") {
@@ -79,7 +80,8 @@ export default function Home({
 	);
 }
 //  ------------------------------------------
-export async function getStaticProps() {
+export function getStaticProps() {
+	// async/await is not implemented yet!
 	const scriptAddress =
 		"https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js";
 	const cryptoTowerAddress =

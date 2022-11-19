@@ -3,9 +3,11 @@ import React from "react";
 function Header({ address, setAddress, fetchNFTs }) {
 	return (
 		<header className="mt-10">
+			{/* logotype */}
 			<h1 className="text-center text-6xl font-extrabold text-amber-400 drop-shadow-xl ">
 				<a href="./">NFT Land </a>
 			</h1>
+			{/* find NFT's form */}
 			<form className="mt-5 flex flex-col">
 				<input
 					value={address}
