@@ -8,7 +8,7 @@ function NFTCard({ data }) {
 			<img
 				className={
 					data?.media[0]?.gateway
-						? "overflow-hidden"
+						? "overflow-y-auto"
 						: "object-contain"
 				}
 				src={
