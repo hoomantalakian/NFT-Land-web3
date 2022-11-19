@@ -1,11 +1,15 @@
 import Head from "next/head";
-import NFTCard from "../components/NFTCard.jsx";
 import { useState } from "react";
 import Script from "next/script";
-import axios from "axios";
-//------------------------------
-
-export default function Home(props) {
+import Header from "../components/Header.jsx";
+import Main from "../components/Main.jsx";
+import Footer from "../components/Footer.jsx";
+//-----------------------------------------
+export default function Home({
+	scriptAddress,
+	cryptoTowerAddress,
+	loadingCubesAddress,
+}) {
 	const [address, setAddress] = useState("");
 	const [data, setData] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
@@ -36,7 +40,6 @@ export default function Home(props) {
 				alert("Wallet has no NFTs");
 			}
 			setData(data.data.ownedNfts);
-			console.log(data);
 			setIsLoading(false);
 			return;
 		} catch (err) {
@@ -44,15 +47,14 @@ export default function Home(props) {
 			return;
 		}
 	};
-	//
+	// -------------------------------------------
 	return (
 		<wholepage
-			className={`container m-auto flex  min-h-screen flex-col px-10 text-center md:px-20 ${
+			className={`container m-auto flex  min-h-screen flex-col px-6 text-center sm:px-10 md:px-20 ${
 				data !== [] ? "justify-evenly" : "justify-between"
 			} `}
 		>
-			{" "}
-			<Script src={props.scriptAddress} />
+			<Script src={scriptAddress} />
 			<Head>
 				<title>NFT Land</title>
 				<meta
@@ -61,74 +63,23 @@ export default function Home(props) {
 				/>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			{/* HEADER */}
-			<header className="mt-10">
-				<h1 className="text-center text-6xl font-extrabold text-amber-400 drop-shadow-xl ">
-					<a href="./">NFT Land </a>
-				</h1>
-				<form className="mt-5 flex flex-col">
-					<input
-						value={address}
-						onChange={(e) => setAddress(e.target.value)}
-						type="text"
-						placeholder="Paste Wallet Address Here"
-						className="w-full self-center rounded-sm pl-2 shadow-lg  lg:w-96"
-					/>
-					<button
-						onClick={fetchNFTs}
-						className=" my-5 w-auto self-center rounded-lg bg-amber-400 px-5 py-1 font-semibold text-gray-800 drop-shadow-[0_5px_5px_rgba(0,0,0,0.25)] duration-200  ease-in-out hover:bg-teal-300"
-					>
-						Find NFTs !
-					</button>
-				</form>
-			</header>
-			{/* BODY */}
-			<main>
-				<cards className="mt-4 grid justify-center gap-5 md:grid-cols-2 lg:grid-cols-3 ">
-					{data.map((nft) => (
-						<NFTCard key={Math.random()} data={nft}></NFTCard>
-					))}
-				</cards>
-
-				{isInHome && (
-					<div className="m-auto h-[18rem] w-[15rem] -translate-x-3 scale-110">
-						<lottie-player
-							id="crypto-tower"
-							src={props.cryptoTowerAddress}
-							speed="1"
-							loop
-							autoplay
-						></lottie-player>
-					</div>
-				)}
-				{isLoading && (
-					<div className="m-auto h-[18rem] w-[15rem] scale-150 opacity-80">
-						<lottie-player
-							id="loading-cubes"
-							src={props.loadingCubesAddress}
-							speed="1"
-							loop
-							autoplay
-						></lottie-player>
-					</div>
-				)}
-			</main>
-			{/* FOOTER */}
-			<footer className="mt-8 mb-5 text-gray-900">
-				Made by{" "}
-				<a
-					className=" font-semibold text-blue-900"
-					href="https://github.com/hoomantalakian"
-					target="_blank"
-					rel="noreferrer"
-				>
-					Hooman Talakian
-				</a>
-			</footer>
+			<Header {...{ address, setAddress, fetchNFTs }} />
+			<Main
+				{...{
+					data,
+					isInHome,
+					isLoading,
+					scriptAddress,
+					cryptoTowerAddress,
+					loadingCubesAddress,
+				}}
+			/>
+			<Footer />
 		</wholepage>
 	);
 }
-export function getStaticProps(context) {
+//  ------------------------------------------
+export async function getStaticProps() {
 	const scriptAddress =
 		"https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js";
 	const cryptoTowerAddress =
