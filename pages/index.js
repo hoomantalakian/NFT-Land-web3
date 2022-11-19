@@ -29,7 +29,7 @@ export default function Home({
 		try {
 			const response = await fetch(`/api/get-nfts?wallet=${address}`);
 			if (!response.ok) {
-				alert("Something went wrong!");
+				alert("Something went wrong! maybe your Wallet Address is Invalid!");
 				setIsLoading(false);
 				setIsInHome(true);
 				return;
@@ -38,7 +38,7 @@ export default function Home({
 			if (data.data.totalCount == 0) {
 				setIsInHome(true);
 				setIsLoading(false);
-				alert("Wallet has no NFTs");
+				alert("This Wallet has no NFTs");
 			}
 			setData(data.data.ownedNfts);
 			setIsLoading(false);
