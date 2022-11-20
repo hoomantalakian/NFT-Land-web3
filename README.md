@@ -1,4 +1,4 @@
-# This is a NFT Explorer With help of:
+# This is a NFT Explorer with the help of:
 - Next.js
 - Alchemy API
 - Tailwindcss
