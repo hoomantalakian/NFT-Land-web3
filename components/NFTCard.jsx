@@ -1,21 +1,17 @@
-/* eslint-disable @next/next/no-img-element */
+import Image from "next/image";
 import React from "react";
 // --------------------------
 function NFTCard({ data }) {
 	return (
 		<div className="m-auto flex  max-w-[70%] flex-col rounded-lg border border-gray-300 p-3  sm:m-0 sm:max-w-lg ">
-			{/* image */}
-			<img
-				className={
-					data?.media[0]?.gateway
-						? "overflow-y-auto"
-						: "object-contain"
-				}
+			<Image
 				src={
 					data?.media[0]?.gateway ||
 					"https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg"
 				}
 				alt={data?.description}
+				width={500}
+				height={500}
 			/>
 			{/* title */}
 			<div className="mt-2 rounded-md bg-teal-50 px-2">
