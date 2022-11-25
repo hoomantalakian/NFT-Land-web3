@@ -29,7 +29,7 @@ export default function Home({
 		try {
 			const response = await fetch(`/api/get-nfts?wallet=${address}`);
 			if (!response.ok) {
-				alert("Something went wrong! maybe your Wallet Address is Invalid!");
+				alert("Something went wrong! Check your Input or Connection");
 				setIsLoading(false);
 				setIsInHome(true);
 				return;
@@ -81,12 +81,12 @@ export default function Home({
 }
 //  ------------------------------------------
 export function getStaticProps() {
-	// async/await is not implemented yet!
-	const scriptAddress =
+	// async/await testing!
+	let scriptAddress =
 		"https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js";
-	const cryptoTowerAddress =
+	let cryptoTowerAddress =
 		"https://assets3.lottiefiles.com/packages/lf20_2omr5gpu.json";
-	const loadingCubesAddress =
+	let loadingCubesAddress =
 		"https://assets4.lottiefiles.com/private_files/lf30_c52paxfj.json";
 
 	return {
