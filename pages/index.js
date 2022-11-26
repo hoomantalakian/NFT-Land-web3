@@ -5,7 +5,7 @@ import Header from "../components/Header.jsx";
 import Main from "../components/Main.jsx";
 import Footer from "../components/Footer.jsx";
 import useFetchNFTs from "../hooks/use-fetch-NFTs.js";
-//-----------------------------------------
+//-----------------------------
 export default function Home({
 	scriptAddress,
 	cryptoTowerAddress,
@@ -45,7 +45,7 @@ export default function Home({
 		</wholepage>
 	);
 }
-//  ------------------------------------------
+//  --------------------------------
 export function getStaticProps() {
 	// async/await testing!
 	let scriptAddress =
